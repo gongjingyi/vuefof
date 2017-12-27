@@ -1,0 +1,70 @@
+body, html
+  line-height: 1
+  font-weight: 200
+  font-family: 'Microsoft YaHei', 'PingFang SC', 'STHeitiSC-Light', 'Helvetica-Light', arial, sans-serif
+  padding: 0
+  margin: 0
+  height: 100%
+a
+  text-decoration: none
+input 
+  margin: 0
+  padding: 0
+  border: 1px solid #d5d5d7  
+.clearfix
+  display: inline-block
+  &:after
+    display: block
+    content: "."
+    height: 0
+    line-height: 0
+    clear: both
+    visibility: hidden
+.but
+  height: calc(42px * 1.172)
+  width: calc(300px * 1.172)
+  border-radius: 4px
+  a
+    display: inline-block
+    height: 100%
+    width: 100%
+    line-height: 42px
+    color: #ffffff
+    text-align: center 
+.redB
+  background: #c00019  
+.red
+  color: #c00019
+ .white
+   color: #ffffff
+.font10
+  font-size: calc(10px * 1.172)
+.font12
+  font-size: calc(12px * 1.172)
+.font14
+  font-size: calc(14px * 1.172)
+.font16
+  font-size: calc(16px * 1.172)
+.font18
+  font-size: calc(18px * 1.172)
+.font20
+  font-size: calc(20px * 1.172)
+.font22
+  font-size: calc(22px * 1.172)
+
+@media (-webkit-min-device-pixel-ratio: 1.5),(min-device-pixel-ratio: 1.5)
+  .border-1px
+    &::after
+      -webkit-transform: scaleY(0.7)
+      transform: scaleY(0.7)
+
+@media (-webkit-min-device-pixel-ratio: 2),(min-device-pixel-ratio: 2)
+  .border-1px
+    &::after
+      -webkit-transform: scaleY(0.5)
+      transform: scaleY(0.5)
+@media (-webkit-min-device-pixel-ratio: 3),(min-device-pixel-ratio: 3)
+  .border-1px
+    &::after
+      -webkit-transform: scaleY(0.34)
+      transform: scaleY(0.34)
