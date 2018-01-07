@@ -3,10 +3,10 @@
         <div class="cont-index" v-if="indexshow>0">
             <div class="img-bg">
             </div>
-            <div class="but redB white font18 button1" @click="indexshow=0">
+            <div class="but redB white font18 button1" @click="gologin">
                 <router-link to="/login">去登录</router-link>
             </div>
-            <div class="but redB white font18 button2" @click="indexshow=0">
+            <div class="but redB white font18 button2" @click="gosurvey">
                 <router-link to="/survey">开始定制</router-link>
             </div>        
         </div>
@@ -15,12 +15,24 @@
 </template>
 
 <script>
-export default{
-    data () {
-        return {
-            indexshow: 1
-        };
+export default {
+  data() {
+    return {
+      indexshow: 1,
+      loginshow: 0,
+      surveyshow: 0
+    };
+  },
+  methods: {
+    gologin() {
+      this.indexshow = 0;
+      this.loginshow = 1;
+    },
+    gosurvey() {
+      this.indexshow = 0;
+      this.surveyshow = 1;
     }
+  }
 };
 </script>
 

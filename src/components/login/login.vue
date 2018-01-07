@@ -1,32 +1,60 @@
 <template>
-    <div class="cont-login">
+    <div class="cont-login" v-if="loginshow>0">
         <div class="login">
             <div class="login-title font12">请登录您的账号！</div>
             <div class="login-name">
                 <div class="user-icon"><span></span></div>
-                <div class="user-text"><input type="text" placeholder="请输入用户名" value="" id="username"></div>
+                <div class="user-text"><input type="text" placeholder="请输入用户名" value="" id="username" v-model="username"></div>
             </div>
             <div class="login-password">
                 <div class="password-icon"><span></span></div>
-                <div class="password-text"><input type="password" placeholder="请输入密码" value="" id="userpassword"></div>
+                <div class="password-text"><input type="password" placeholder="请输入密码" value="" id="password" v-model="password"></div>
             </div>
-            <div class="login-but">
-                 <span>登录</span>   
+            <div class="login-but" @click="login">
+                <router-link to="/survey"><span>登录</span></router-link>
             </div>
         </div>
     </div>
 </template>
-
+ 
 <script>
-    export default{
-        data () {
-            return {
-                imgAry: []
-            };
-        }
+export default {
+  data() {
+    return {
+      imgAry: [],
+      username: '',
+      password: '',
+      loginshow: 1
     };
+  },
+  created() {},
+  methods: {
+    login() {
+      const url = 'https://dev.gupiaoxianji.com/fof/';
+      const parm = {
+        id: 54321,
+        jsonrpc: '2.0',
+        method: 'Fof.Fof_Login',
+        params: { username: this.username, passwd: this.password }
+      };
+      this.$http.post(url, parm).then(
+        response => {
+        //   alert(JSON.stringify(response.body));
+          if (
+            response.body['result']['status'] === 0 &&
+            response.body['result']['username'] === 'admin'
+          ) {
+            this.loginshow = 0;
+          }
+        },
+        response => {
+          //   error callback
+        }
+      );
+    }
+  }
+};
 </script>
-
 <style lang="stylus" rel="stylesheet/stylus">
     @import '../../common/stylus/mixin.styl';
     .cont-login
@@ -104,4 +132,7 @@
                     border-radius calc(12.5px * 1.172)
                     color #fff
                     font-size calc(12px * 1.172)
+                a
+                    height 100%
+                    width 100%    
 </style>
