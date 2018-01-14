@@ -48,7 +48,7 @@
             <div class="tab-sury-title fontbold">您投资资金的中长期资金占比(单位：%)</div>
             <div class="tab-sury-cont">
                 <div class="tab-sury-sub">
-                    <span>比例值：</span><span class="fontbold orange">7.33</span>
+                    <span>比例区间：</span><span class="fontbold orange">2</span>
                 </div>
                 <div class="tab-sury-part-cont">
                     <div class="tab-sury-part">
@@ -79,7 +79,10 @@
                     <div class="tab-rule-sild tab-rule-sild-orange"></div>                    
                 </div>
             </div>
-        </div>                
+        </div>
+        <div class="tab-survey-but">
+            <router-link to="/commit">完成</router-link>
+        </div>
     </div>
 </template>
 
@@ -182,5 +185,20 @@
                                 border 0
                                 width 20%    
 
+
+
+
+
+
+        .tab-survey-but
+            margin-top calc(15px * 1.172)
+            a
+                height calc(35px * 1.172)
+                width 100%
+                line-height calc(35px * 1.172)
+                color #ffffff
+                font-size calc(12px * 1.172)
+                background #ff632c
+                text-align center
 </style>        
     
