@@ -57,81 +57,82 @@ export default {
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
     @import '../../common/stylus/mixin.styl';
+    scalval = 1.172    
     .cont-login
         height 100%
         width 100%
         position relative
         .login
-            width calc(216px * 1.172)
-            height calc(201px * 1.172)         
+            width 216px * scalval
+            height 201px * scalval         
             bg-img('img/login_bg.png')
             x-center('50%')
-            top calc(100px * 1.172)
+            top 100px * scalval
             .login-title
                 color #333333
-                line-height calc(12px * 1.172)  
-                margin-top calc(17px * 1.172)      
+                line-height 12px * scalval  
+                margin-top 17px * scalval      
                 text-align center
             .login-name,.login-password
-                height calc(25px * 1.172)
-                width calc(150px * 1.172)    
-                pos-x(calc(33px * 1.172))
+                height 25px * scalval
+                width 150px * scalval    
+                pos-x(33px * scalval)
                 display flex
             .login-name
-                pos-y(calc(58px * 1.172))
+                pos-y(58px * scalval)
                 .user-icon
-                    width calc(19.5px * 1.172)
+                    width 19.5px * scalval
                     height 100%
                     position absolute
                     font-size 0
                     span 
                         display inline-block
-                        height calc(11px * 1.172)
-                        width calc(8.5px * 1.172)
+                        height 11px * scalval
+                        width 8.5px * scalval
                         bg-img('img/locked.png')
-                        margin-left calc(11px * 1.172)
-                        margin-top calc(7px * 1.172)
+                        margin-left 11px * scalval
+                        margin-top 7px * scalval
                 .user-text
                     width 100%
                     input 
                         height 100%
-                        width calc(100% - calc(26.5px * 1.172) - 2px)
-                        padding-left calc(26.5px * 1.172)   
+                        width 100% - 26.5px * scalval - 2px
+                        padding-left 26.5px * scalval   
             .login-password
-                pos-y(calc(93px * 1.172)) 
+                pos-y(93px * scalval) 
                 .password-icon
-                    width calc(19.5px * 1.172)
+                    width 19.5px * scalval
                     height 100%
                     position absolute
                     font-size 0
                     span 
                         display inline-block
-                        height calc(11px * 1.172)
-                        width calc(8.5px * 1.172)
+                        height 11px * scalval
+                        width 8.5px * scalval
                         bg-img('img/user.png')
-                        margin-left calc(11px * 1.172)
-                        margin-top calc(7px * 1.172)
+                        margin-left 11px * scalval
+                        margin-top 7px * scalval
                 .password-text
                     width 100%
                     input 
                         height 100%
-                        width calc(100% - calc(26.5px * 1.172) - 2px)
-                        padding-left calc(26.5px * 1.172)    
+                        width 100% - 26.5px * scalval - 2px
+                        padding-left 26.5px * scalval    
             .login-but
-                width calc(150px * 1.172)                            
-                height calc(25px * 1.172)
+                width 150px * scalval                            
+                height 25px * scalval
                 x-center('50%')
-                pos-y(calc(138px * 1.172))
+                pos-y(138px * scalval)
                 span 
                     display inline-block
                     height 100%
                     width 100%
-                    line-height calc(25px * 1.172)   
+                    line-height 25px * scalval   
                     text-align center
                     background #ff0038
-                    border-radius calc(12.5px * 1.172)
+                    border-radius 12.5px * scalval
                     color #fff
-                    font-size calc(12px * 1.172)
+                    font-size 12px * scalval
                 a
                     height 100%
                     width 100%    

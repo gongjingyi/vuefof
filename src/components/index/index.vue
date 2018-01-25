@@ -38,7 +38,7 @@ export default {
 
 <style lang="stylus" rel="stylesheet/stylus">
 @import '../../common/stylus/mixin.styl';
-
+scalval = 1.172
 .content,.cont-index
     height 100%
     width 100%
@@ -48,7 +48,7 @@ export default {
     .button1,.button2
         x-center()
     .button1
-        bottom calc(calc(15px + 42px + 15px) * 1.172)
+        bottom (15px + 42px + 15px) * scalval
     .button2
-        bottom calc(15px * 1.172)
+        bottom 15px * scalval
 </style>

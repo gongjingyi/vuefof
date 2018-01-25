@@ -4,13 +4,12 @@
             <div class="tab-sury-title fontbold">您的收益和风险期望</div>
             <div class="tab-sury-cont">
                 <div class="tab-sury-sub">
-                    <span>预期收益</span><span class="fontbold orange">7.33%</span><span>,可能波动率</span><span class="fontbold green">4.55%</span>
+                    <span>预期收益</span><span class="fontbold orange">{{incomeval}}%</span><span>,可能波动率</span><span class="fontbold green">{{deficitValue}}%</span>
                 </div>
                 <div class="tab-sury-rule">
                     <div class="tab-show-value"></div>
                     <div class="tab-rule-partnum tab-rule-partnum1">
                         <span>0</span>
-                        <span>4</span>
                         <span>20</span>
                     </div>
                     <div class="tab-rule-button"></div>
@@ -29,7 +28,7 @@
             <div class="tab-sury-title fontbold">您计划投入的资金(单位：万)</div>
             <div class="tab-sury-cont">
                 <div class="tab-sury-sub">
-                    <span>资金值：</span><span class="fontbold orange">39</span>
+                    <span>资金值：</span><span class="fontbold orange">{{fundVal}}</span>
                 </div>
                 <div class="tab-sury-rule">
                     <div class="tab-show-value"></div>
@@ -48,12 +47,12 @@
             <div class="tab-sury-title fontbold">您投资资金的中长期资金占比(单位：%)</div>
             <div class="tab-sury-cont">
                 <div class="tab-sury-sub">
-                    <span>比例区间：</span><span class="fontbold orange">2</span>
+                    <span>比例区间：</span><span class="fontbold orange">{{radioVal}}</span>
                 </div>
                 <div class="tab-sury-part-cont">
                     <div class="tab-sury-part">
-                        <span>0~29%</span>                        
-                        <span class="active">30~49%</span>                        
+                        <span class="active">0~29%</span>                        
+                        <span>30~49%</span>                        
                         <span>50~69%</span>                        
                         <span>70~89%</span>                        
                         <span>90~100%</span>                                                                                                                        
@@ -65,7 +64,7 @@
             <div class="tab-sury-title fontbold">您中长期投资资金的投资年限(单位：月)</div>
             <div class="tab-sury-cont">
                 <div class="tab-sury-sub">
-                    <span>年限值：</span><span class="fontbold orange">12</span>
+                    <span>年限值：</span><span class="fontbold orange">{{timeVal}}</span>
                 </div>
                 <div class="tab-sury-rule">
                     <div class="tab-show-value"></div>
@@ -87,118 +86,226 @@
 </template>
 
 <script>
-</script>
+export default {
+  data() {
+    return {
+      scalval: 1.172,
+      leftval0: 0,
+      slideTotalWidth: 0,
+      incomeval:0,
+      deficitValue:0,
+      fundVal:0,
+      radioVal:0,
+      timeVal:0,
+      widthorg:0  
+    };
+  },
+  computed: {
+    // incomeval: function() {
+    //   return parseFloat(this.leftval0 + 8 * this.scalval).toFixed(2);
+    // }
+  },
+  created() {
+    this.$nextTick(function() {
+      let _this = this;
+      _this.slideTotalWidth = document.getElementsByClassName('tab-rule-sild')[0].clientWidth;
+      _this.leftval0 = -8 * _this.scalval;
+      _this.slidel0(_this);
+      _this.slidel1(_this);
+      _this.slidel2(_this);
+      _this.slidel3(_this);
+    });
+  },
+  methods: {
+    slidel0: function(thisval) {
+      let _this = thisval;
+      const slideLogoEle0 = document.getElementsByClassName('tab-rule-button')[0];
+      slideLogoEle0.addEventListener('touchmove', function(e) {
+        let clientX = e.touches[0].clientX;
+        let offsetX = clientX - 20 * _this.scalval + _this.leftval0; // 偏移位置
+        if (offsetX <= _this.leftval0) {
+          slideLogoEle0.style.left = _this.leftval0 + 'px';
+          _this.incomeval=0;
+        } else if (offsetX > _this.leftval0 && offsetX < _this.slideTotalWidth + _this.leftval0) {
+          slideLogoEle0.style.left = offsetX + 'px';
+          _this.incomeval=(parseFloat((offsetX-_this.leftval0)/_this.slideTotalWidth)*20).toFixed(2);
+        } else {
+          slideLogoEle0.style.left = _this.slideTotalWidth + _this.leftval0;
+          _this.incomeval=20;
+        }
+        _this.return_rate(_this.incomeval,_this);
+      });
+    },
+    slidel1: function(thisval) {
+      let _this = thisval;
+      const slideLogoEle0 = document.getElementsByClassName('tab-rule-button')[1];
+      slideLogoEle0.addEventListener('touchmove', function(e) {
+        let clientX = e.touches[0].clientX;
+        let offsetX = clientX - 20 * _this.scalval + _this.leftval0; // 偏移位置
+        if (offsetX <= _this.leftval0) {
+          slideLogoEle0.style.left = _this.leftval0 + 'px';
+          _this.incomeval=0;
+        } else if (offsetX > _this.leftval0 && offsetX < _this.slideTotalWidth + _this.leftval0) {
+          slideLogoEle0.style.left = offsetX + 'px';
+          _this.incomeval=(parseFloat((offsetX-_this.leftval0)/_this.slideTotalWidth)*20).toFixed(2);
+        } else {
+          slideLogoEle0.style.left = _this.slideTotalWidth + _this.leftval0;
+          _this.incomeval=20;
+        }
+        _this.return_rate(_this.incomeval,_this);
+      });
+    },
+    slidel2:function(thisval){
+      let _this = thisval;
+      let spanary=document.getElementsByClassName('tab-sury-part')[0].getElementsByTagName('span');
+      for(let i=0;i<spanary.length;i++){
+        spanary[i].onclick=function(){
+          for(let j=0;j<spanary.length;j++){
+            spanary[j].setAttribute("class",'');
+          }       
+          this.setAttribute("class",'active');
+          _this.radioVal=i;  
+        }
+      }
 
+    },
+    slidel3: function(thisval) {
+      let _this = thisval;
+      const slideLogoEle0 = document.getElementsByClassName('tab-rule-button')[2];
+      slideLogoEle0.addEventListener('touchmove', function(e) {
+        let clientX = e.touches[0].clientX;
+        let offsetX = clientX - 20 * _this.scalval + _this.leftval0; // 偏移位置
+        if (offsetX <= _this.leftval0) {
+          slideLogoEle0.style.left = _this.leftval0 + 'px';
+          _this.incomeval=0;
+        } else if (offsetX > _this.leftval0 && offsetX < _this.slideTotalWidth + _this.leftval0) {
+          slideLogoEle0.style.left = offsetX + 'px';
+          _this.incomeval=(parseFloat((offsetX-_this.leftval0)/_this.slideTotalWidth)*20).toFixed(2);
+        } else {
+          slideLogoEle0.style.left = _this.slideTotalWidth + _this.leftval0;
+          _this.incomeval=20;
+        }
+        _this.return_rate(_this.incomeval,_this);
+      });
+    },
+    //收益亏损计算公式
+    return_rate:function (incomeRate,thisval){
+        let _this=thisval;
+        var returnVal=0;
+        if(incomeRate>4){
+            returnVal = -0.008475 * incomeRate * incomeRate + 0.6425 * incomeRate - 1.195;
+        }else{
+            returnVal = 0;
+        }
+        _this.deficitValue=(parseFloat(returnVal.toFixed(5))).toFixed(2);
+    }
+  }
+};
+</script>
 <style lang="stylus" rel="stylesheet/stylus">
     @import '../../common/stylus/mixin.styl';
+    scalval = 1.172
     .cont-survey
         background #e7e7e7
-        padding calc(15px * 1.172) calc(10px * 1.172)
+        padding 15px * scalval 10px * scalval
         .tab-sury-item+.tab-sury-item
-            margin-top calc(15px * 1.172)        
+            margin-top 15px * scalval
         .tab-sury-item
             background #ffffff
             .tab-sury-title
-                height calc(40px * 1.172)
+                height 40px * scalval
                 text-align center
-                line-height calc(40px * 1.172)
+                line-height 40px * scalval
             .tab-sury-cont    
                 border-1px-top(#dadada)
-                padding calc(11px * 1.172) (10px * 1.172) (20px * 1.172) (10px * 1.172)
+                padding 11px * scalval 10px * scalval 20px * scalval 10px * scalval
                 .tab-sury-sub
-                    line-height calc(12px * 1.172)
+                    line-height 12px * scalval
                 .tab-sury-sub
-                    margin-bottom  calc(20px * 1.172)    
+                    margin-bottom  20px * scalval    
                 .tab-sury-rule    
                     position relative
                     .tab-rule-partnum
-                        height calc(12px * 1.172)    
-                        line-height calc(12px * 1.172)
-                        padding 0 0 calc(37px * 1.172) 0
+                        height 12px * scalval    
+                        line-height 12px * scalval
+                        padding 0 0 37px * scalval 0
                         font-size 0
                         span
                             display inline-block
-                            font-size calc(12px * 1.172)
+                            font-size 12px * scalval
                     .tab-rule-partnum1
                         span:nth-child(1)    
-                            width 50%
-                        span:nth-child(2)    
-                            width 40%
+                            width 95%
                         span:nth-child(3)    
-                            width 10%
+                            width 5%
                     .tab-rule-partnum2
                         span:nth-child(1)    
                             width 50%
                         span:nth-child(2)    
-                            width 40%
+                            width 42%
                         span:nth-child(3)    
-                            width 10%
+                            width 8%
                     .tab-rule-partnum4
                         span:nth-child(1)    
                             width 50%
                         span:nth-child(2)    
-                            width 40%
+                            width 44%
                         span:nth-child(3)    
-                            width 10%                
+                            width 6%                
                     .tab-rule-button
                         position absolute
-                        top calc(21px * 1.172)
-                        height calc(25px * 1.172)
-                        width calc(24px * 1.172)
+                        top 21px * scalval
+                        height 25px * scalval
+                        width 24px * scalval
                         bg-img('img/point.png')
                         z-index 101
-                        left -2%
+                        left -8px * scalval
                     .tab-rule-sild    
                         position absolute
-                        height calc(6px * 1.172)
-                        top calc(31px * 1.172)                    
+                        height 6px * scalval
+                        top 31px * scalval                    
                     .tab-rule-sild-gray
                         background #e1e1e1
                         width 100%
                         z-index 99
                     .tab-rule-sild-orange
-                        width calc(100px * 1.172)
+                        width 100px * scalval
                         background #fa6d35
                         z-index 100
                 .tab-sury-part-cont
                     height 100%
                     width 100%
                     .tab-sury-part
-                         height calc(29px * 1.172)
-                         width calc(279px * 1.172)
-                         border calc(0.5px * 1.172) solid #fa6d35
+                         height 29px * scalval
+                         width 279px * scalval
+                         border 0.5px * scalval solid #fa6d35
                          background #fee9e1
                          font-size 0
                          span 
                             display inline-block
                             height 100%
-                            width calc(20% - calc(0.5px * 1.172))
-                            line-height calc(29px * 1.172)
+                            width 20% - 0.5px * scalval
+                            line-height 29px * scalval
                             text-align center                            
-                            border-right calc(0.5px * 1.172) solid #fa6d35
+                            border-right 0.5px * scalval solid #fa6d35
                             color #fa6d35
-                            font-size calc(12px * 1.172)
+                            font-size 12px * scalval
                             &.active
                                 background #fa6d35
                                 color #ffffff
                             &:last-child
                                 border 0
-                                width 20%    
-
-
-
-
-
-
+                                width 20%
         .tab-survey-but
-            margin-top calc(15px * 1.172)
+            margin-top 15px * scalval
             a
-                height calc(35px * 1.172)
+                height 35px * scalval
                 width 100%
-                line-height calc(35px * 1.172)
+                line-height 35px * scalval
                 color #ffffff
-                font-size calc(12px * 1.172)
+                font-size 12px * scalval
                 background #ff632c
                 text-align center
 </style>        
+
     
