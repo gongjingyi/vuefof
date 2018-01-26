@@ -22,27 +22,27 @@ export default {
   data() {
     return {
       imgAry: [],
-      username: '',
-      password: '',
+      username: "",
+      password: "",
       loginshow: 1
     };
   },
   created() {},
   methods: {
     login() {
-      const url = 'https://dev.gupiaoxianji.com/fof/';
+      const url = "https://dev.gupiaoxianji.com/fof/";
       const parm = {
         id: 54321,
-        jsonrpc: '2.0',
-        method: 'Fof.Fof_Login',
+        jsonrpc: "2.0",
+        method: "Fof.Fof_Login",
         params: { username: this.username, passwd: this.password }
       };
       this.$http.post(url, parm).then(
         response => {
-        //   alert(JSON.stringify(response.body));
+          //   alert(JSON.stringify(response.body));
           if (
-            response.body['result']['status'] === 0 &&
-            response.body['result']['username'] === 'admin'
+            response.body["result"]["status"] === 0 &&
+            response.body["result"]["username"] === "admin"
           ) {
             this.loginshow = 0;
           }

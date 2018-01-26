@@ -80,7 +80,7 @@
             </div>
         </div>
         <div class="tab-survey-but">
-            <router-link to="/commit">完成</router-link>
+            <router-link to="#" class="tab-survey-but-a">完成</router-link>
         </div>
     </div>
 </template>
@@ -92,12 +92,13 @@ export default {
       scalval: 1.172,
       leftval0: 0,
       slideTotalWidth: 0,
-      incomeval:0,
-      deficitValue:0,
-      fundVal:0,
-      radioVal:0,
-      timeVal:0,
-      widthorg:0  
+      incomeval: 0,
+      deficitValue: 0,
+      fundVal: 0,
+      radioVal: 0,
+      timeVal: 0,
+      timechose:0,
+      widthorg: 0
     };
   },
   computed: {
@@ -108,96 +109,175 @@ export default {
   created() {
     this.$nextTick(function() {
       let _this = this;
-      _this.slideTotalWidth = document.getElementsByClassName('tab-rule-sild')[0].clientWidth;
+      _this.slideTotalWidth = document.getElementsByClassName(
+        "tab-rule-sild"
+      )[0].clientWidth;
       _this.leftval0 = -8 * _this.scalval;
       _this.slidel0(_this);
       _this.slidel1(_this);
       _this.slidel2(_this);
       _this.slidel3(_this);
+      _this.commit_sury(_this);
     });
   },
   methods: {
     slidel0: function(thisval) {
       let _this = thisval;
-      const slideLogoEle0 = document.getElementsByClassName('tab-rule-button')[0];
-      slideLogoEle0.addEventListener('touchmove', function(e) {
+      const slideLogoEle0 = document.getElementsByClassName(
+        "tab-rule-button"
+      )[0];
+      const slidorange = document.getElementsByClassName("tab-rule-sild-orange")[0];
+      slideLogoEle0.addEventListener("touchmove", function(e) {
         let clientX = e.touches[0].clientX;
-        let offsetX = clientX - 20 * _this.scalval + _this.leftval0; // 偏移位置
+        let offsetX = clientX - 20 * _this.scalval + _this.leftval0;
         if (offsetX <= _this.leftval0) {
-          slideLogoEle0.style.left = _this.leftval0 + 'px';
-          _this.incomeval=0;
-        } else if (offsetX > _this.leftval0 && offsetX < _this.slideTotalWidth + _this.leftval0) {
-          slideLogoEle0.style.left = offsetX + 'px';
-          _this.incomeval=(parseFloat((offsetX-_this.leftval0)/_this.slideTotalWidth)*20).toFixed(2);
+          slideLogoEle0.style.left = _this.leftval0 + "px";
+          slidorange.style.width = 0 + "px";          
+          _this.incomeval = 0;
+        } else if (
+          offsetX > _this.leftval0 &&
+          offsetX < _this.slideTotalWidth + _this.leftval0
+        ) {
+          slideLogoEle0.style.left = offsetX + "px";
+          slidorange.style.width = (offsetX - _this.leftval0) + "px";
+          _this.incomeval = (
+            parseFloat((offsetX - _this.leftval0) / _this.slideTotalWidth) * 20
+          ).toFixed(2);
         } else {
           slideLogoEle0.style.left = _this.slideTotalWidth + _this.leftval0;
-          _this.incomeval=20;
+          slidorange.style.width = _this.slideTotalWidth;
+          _this.incomeval = 20;
         }
-        _this.return_rate(_this.incomeval,_this);
+        _this.return_rate(_this.incomeval, _this);
       });
     },
     slidel1: function(thisval) {
       let _this = thisval;
-      const slideLogoEle0 = document.getElementsByClassName('tab-rule-button')[1];
-      slideLogoEle0.addEventListener('touchmove', function(e) {
+      const slideLogoEle1 = document.getElementsByClassName(
+        "tab-rule-button"
+      )[1];
+      const slidorange1 = document.getElementsByClassName("tab-rule-sild-orange")[1];
+      slideLogoEle1.addEventListener("touchmove", function(e) {
         let clientX = e.touches[0].clientX;
-        let offsetX = clientX - 20 * _this.scalval + _this.leftval0; // 偏移位置
+        let offsetX = clientX - 20 * _this.scalval + _this.leftval0;
         if (offsetX <= _this.leftval0) {
-          slideLogoEle0.style.left = _this.leftval0 + 'px';
-          _this.incomeval=0;
-        } else if (offsetX > _this.leftval0 && offsetX < _this.slideTotalWidth + _this.leftval0) {
-          slideLogoEle0.style.left = offsetX + 'px';
-          _this.incomeval=(parseFloat((offsetX-_this.leftval0)/_this.slideTotalWidth)*20).toFixed(2);
+          slideLogoEle1.style.left = _this.leftval0 + "px";
+          slidorange1.style.width = 0 + "px"; 
+          _this.fundVal = 0;
+        } else if (
+          offsetX > _this.leftval0 &&
+          offsetX <= (_this.slideTotalWidth/2) + _this.leftval0
+        ) {
+          slideLogoEle1.style.left = offsetX + "px";
+          slidorange1.style.width = (offsetX - _this.leftval0) + "px";
+          _this.fundVal = (
+            parseFloat((offsetX - _this.leftval0)*2 / _this.slideTotalWidth) * 100
+          ).toFixed(2);
+        }  else if (
+          offsetX > (_this.slideTotalWidth/2) + _this.leftval0 &&
+          offsetX < _this.slideTotalWidth + _this.leftval0
+        ) {
+          slideLogoEle1.style.left = offsetX + "px";
+          slidorange1.style.width = (offsetX - _this.leftval0) + "px";
+          _this.fundVal = (
+            parseFloat((offsetX - _this.leftval0 - _this.slideTotalWidth/2)*2 / _this.slideTotalWidth) * (500-100)+100
+          ).toFixed(2);
         } else {
-          slideLogoEle0.style.left = _this.slideTotalWidth + _this.leftval0;
-          _this.incomeval=20;
+          slideLogoEle1.style.left = _this.slideTotalWidth + _this.leftval0;
+          slidorange1.style.width = _this.slideTotalWidth;
+          _this.fundVal = 500;
         }
-        _this.return_rate(_this.incomeval,_this);
       });
     },
-    slidel2:function(thisval){
+    slidel2: function(thisval) {
       let _this = thisval;
-      let spanary=document.getElementsByClassName('tab-sury-part')[0].getElementsByTagName('span');
-      for(let i=0;i<spanary.length;i++){
-        spanary[i].onclick=function(){
-          for(let j=0;j<spanary.length;j++){
-            spanary[j].setAttribute("class",'');
-          }       
-          this.setAttribute("class",'active');
-          _this.radioVal=i;  
-        }
+      let spanary = document
+        .getElementsByClassName("tab-sury-part")[0]
+        .getElementsByTagName("span");
+      for (let i = 0; i < spanary.length; i++) {
+        spanary[i].onclick = function() {
+          for (let j = 0; j < spanary.length; j++) {
+            spanary[j].setAttribute("class", "");
+          }
+          this.setAttribute("class", "active");
+          _this.radioVal = i;
+        };
       }
-
     },
     slidel3: function(thisval) {
       let _this = thisval;
-      const slideLogoEle0 = document.getElementsByClassName('tab-rule-button')[2];
-      slideLogoEle0.addEventListener('touchmove', function(e) {
+      const slideLogoEle3 = document.getElementsByClassName(
+        "tab-rule-button"
+      )[2];
+      const slidorange2 = document.getElementsByClassName("tab-rule-sild-orange")[2];
+      slideLogoEle3.addEventListener("touchmove", function(e) {
         let clientX = e.touches[0].clientX;
-        let offsetX = clientX - 20 * _this.scalval + _this.leftval0; // 偏移位置
+        let offsetX = clientX - 20 * _this.scalval + _this.leftval0;
         if (offsetX <= _this.leftval0) {
-          slideLogoEle0.style.left = _this.leftval0 + 'px';
-          _this.incomeval=0;
-        } else if (offsetX > _this.leftval0 && offsetX < _this.slideTotalWidth + _this.leftval0) {
-          slideLogoEle0.style.left = offsetX + 'px';
-          _this.incomeval=(parseFloat((offsetX-_this.leftval0)/_this.slideTotalWidth)*20).toFixed(2);
+          slideLogoEle3.style.left = _this.leftval0 + "px";
+          slidorange2.style.width = 0 + "px";
+          _this.timeVal = 0;
+        } else if (
+          offsetX > _this.leftval0 &&
+          offsetX <= (_this.slideTotalWidth/2) + _this.leftval0
+        ) {
+          slideLogoEle3.style.left = offsetX + "px";
+          slidorange2.style.width = (offsetX - _this.leftval0) + "px";
+          _this.timeVal = parseInt(
+            parseFloat((offsetX - _this.leftval0)*2 / _this.slideTotalWidth) * 12
+          );
+        }  else if (
+          offsetX > (_this.slideTotalWidth/2) + _this.leftval0 &&
+          offsetX < _this.slideTotalWidth + _this.leftval0
+        ) {
+          slideLogoEle3.style.left = offsetX + "px";
+          slidorange2.style.width = (offsetX - _this.leftval0) + "px";
+          _this.timeVal = parseInt(
+            parseFloat((offsetX - _this.leftval0 - _this.slideTotalWidth/2)*2 / _this.slideTotalWidth) * (36-12)+12
+          );
         } else {
-          slideLogoEle0.style.left = _this.slideTotalWidth + _this.leftval0;
-          _this.incomeval=20;
+          slideLogoEle3.style.left = _this.slideTotalWidth + _this.leftval0;
+          slidorange2.style.width = _this.slideTotalWidth;
+          _this.timeVal = 36;
         }
-        _this.return_rate(_this.incomeval,_this);
+        if(_this.timeVal<=6){
+            _this.timechose=0;                
+        }else if(_this.timeVal>6&&_this.timeVal<=12){
+            _this.timechose=1;
+        }else if(_this.timeVal>12&&_this.timeVal<=24){
+            _this.timechose=2;
+        }else{
+            _this.timechose=3;
+        }
       });
     },
-    //收益亏损计算公式
-    return_rate:function (incomeRate,thisval){
+    return_rate: function(incomeRate, thisval) {
+      let _this = thisval;
+      var returnVal = 0;
+      if (incomeRate > 4) {
+        returnVal =
+          -0.008475 * incomeRate * incomeRate + 0.6425 * incomeRate - 1.195;
+      } else {
+        returnVal = 0;
+      }
+      _this.deficitValue = parseFloat(returnVal.toFixed(5)).toFixed(2);
+    },
+    commit_sury:function(thisval){
         let _this=thisval;
-        var returnVal=0;
-        if(incomeRate>4){
-            returnVal = -0.008475 * incomeRate * incomeRate + 0.6425 * incomeRate - 1.195;
-        }else{
-            returnVal = 0;
-        }
-        _this.deficitValue=(parseFloat(returnVal.toFixed(5))).toFixed(2);
+        document.getElementsByClassName("tab-survey-but-a")[0].addEventListener('click',function(e){
+            alert(_this.incomeval + _this.fundVal + _this.timeVal);
+            if(_this.incomeval>0 && _this.fundVal>0 && _this.timeVal>0){
+                 alert("heh");
+                document.cookie="shouyi="+(_this.incomeval);
+                document.cookie="kuisun="+(_this.document);       
+                document.cookie="total_amount="+ (parseFloat(_this.fundVal)*10000);
+                document.cookie="surveyStr="+(_this.radioVal)+"_"+(_this.timechose);
+                document.getElementsByClassName('tab-survey-but-a').setAttribute('href','#/commit');
+            }else{
+                alert("请将表单填写完整！");
+                // document.getElementsByClassName('tab-survey-but-a').setAttribute('href','javascript:;');
+            }
+        });
     }
   }
 };
@@ -269,7 +349,7 @@ export default {
                         width 100%
                         z-index 99
                     .tab-rule-sild-orange
-                        width 100px * scalval
+                        width 0px
                         background #fa6d35
                         z-index 100
                 .tab-sury-part-cont
