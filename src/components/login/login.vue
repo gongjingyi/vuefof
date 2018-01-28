@@ -2,6 +2,7 @@
     <div class="cont-login" v-if="loginshow>0">
         <div class="login">
             <div class="login-title font12">请登录您的账号！</div>
+            <div class="login-error red" v-if="errorshow">用户名或者密码错误！</div>
             <div class="login-name">
                 <div class="user-icon"><span></span></div>
                 <div class="user-text"><input type="text" placeholder="请输入用户名" value="" id="username" v-model="username"></div>
@@ -11,7 +12,8 @@
                 <div class="password-text"><input type="password" placeholder="请输入密码" value="" id="password" v-model="password"></div>
             </div>
             <div class="login-but" @click="login">
-                <router-link to="/survey"><span>登录</span></router-link>
+                <!-- <span>登录</span> -->
+                <router-link to="/survey" class="tab-login-a"><span>登录</span></router-link>
             </div>
         </div>
     </div>
@@ -24,7 +26,8 @@ export default {
       imgAry: [],
       username: "",
       password: "",
-      loginshow: 1
+      loginshow: 1,
+      errorshow: 0
     };
   },
   created() {},
@@ -45,6 +48,10 @@ export default {
             response.body["result"]["username"] === "admin"
           ) {
             this.loginshow = 0;
+            this.errorshow = 0;
+            window.location.href = "/survey";
+          } else {
+            this.errorshow = 1;
           }
         },
         response => {
@@ -73,6 +80,11 @@ export default {
                 line-height 12px * scalval  
                 margin-top 17px * scalval      
                 text-align center
+            .login-error
+                width 100%
+                text-align center
+                font-size 12px * scalval
+                pos-y(42px * scalval)
             .login-name,.login-password
                 height 25px * scalval
                 width 150px * scalval    
@@ -95,8 +107,8 @@ export default {
                 .user-text
                     width 100%
                     input 
-                        height 100%
-                        width 100% - 26.5px * scalval - 2px
+                        height 25px * scalval - 2px
+                        width 150px * scalval - 26.5px * scalval - 2px
                         padding-left 26.5px * scalval   
             .login-password
                 pos-y(93px * scalval) 
@@ -115,8 +127,8 @@ export default {
                 .password-text
                     width 100%
                     input 
-                        height 100%
-                        width 100% - 26.5px * scalval - 2px
+                        height 25px * scalval - 2px
+                        width 150px * scalval - 26.5px * scalval - 2px
                         padding-left 26.5px * scalval    
             .login-but
                 width 150px * scalval                            

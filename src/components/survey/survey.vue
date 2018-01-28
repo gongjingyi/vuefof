@@ -80,7 +80,7 @@
             </div>
         </div>
         <div class="tab-survey-but">
-            <router-link to="#" class="tab-survey-but-a">完成</router-link>
+            <router-link to="/commit" class="tab-survey-but-a">完成</router-link>
         </div>
     </div>
 </template>
@@ -97,7 +97,7 @@ export default {
       fundVal: 0,
       radioVal: 0,
       timeVal: 0,
-      timechose:0,
+      timechose: 0,
       widthorg: 0
     };
   },
@@ -126,20 +126,22 @@ export default {
       const slideLogoEle0 = document.getElementsByClassName(
         "tab-rule-button"
       )[0];
-      const slidorange = document.getElementsByClassName("tab-rule-sild-orange")[0];
+      const slidorange = document.getElementsByClassName(
+        "tab-rule-sild-orange"
+      )[0];
       slideLogoEle0.addEventListener("touchmove", function(e) {
         let clientX = e.touches[0].clientX;
         let offsetX = clientX - 20 * _this.scalval + _this.leftval0;
         if (offsetX <= _this.leftval0) {
           slideLogoEle0.style.left = _this.leftval0 + "px";
-          slidorange.style.width = 0 + "px";          
+          slidorange.style.width = 0 + "px";
           _this.incomeval = 0;
         } else if (
           offsetX > _this.leftval0 &&
           offsetX < _this.slideTotalWidth + _this.leftval0
         ) {
           slideLogoEle0.style.left = offsetX + "px";
-          slidorange.style.width = (offsetX - _this.leftval0) + "px";
+          slidorange.style.width = offsetX - _this.leftval0 + "px";
           _this.incomeval = (
             parseFloat((offsetX - _this.leftval0) / _this.slideTotalWidth) * 20
           ).toFixed(2);
@@ -156,31 +158,40 @@ export default {
       const slideLogoEle1 = document.getElementsByClassName(
         "tab-rule-button"
       )[1];
-      const slidorange1 = document.getElementsByClassName("tab-rule-sild-orange")[1];
+      const slidorange1 = document.getElementsByClassName(
+        "tab-rule-sild-orange"
+      )[1];
       slideLogoEle1.addEventListener("touchmove", function(e) {
         let clientX = e.touches[0].clientX;
         let offsetX = clientX - 20 * _this.scalval + _this.leftval0;
         if (offsetX <= _this.leftval0) {
           slideLogoEle1.style.left = _this.leftval0 + "px";
-          slidorange1.style.width = 0 + "px"; 
+          slidorange1.style.width = 0 + "px";
           _this.fundVal = 0;
         } else if (
           offsetX > _this.leftval0 &&
-          offsetX <= (_this.slideTotalWidth/2) + _this.leftval0
+          offsetX <= _this.slideTotalWidth / 2 + _this.leftval0
         ) {
           slideLogoEle1.style.left = offsetX + "px";
-          slidorange1.style.width = (offsetX - _this.leftval0) + "px";
+          slidorange1.style.width = offsetX - _this.leftval0 + "px";
           _this.fundVal = (
-            parseFloat((offsetX - _this.leftval0)*2 / _this.slideTotalWidth) * 100
+            parseFloat((offsetX - _this.leftval0) * 2 / _this.slideTotalWidth) *
+            100
           ).toFixed(2);
-        }  else if (
-          offsetX > (_this.slideTotalWidth/2) + _this.leftval0 &&
+        } else if (
+          offsetX > _this.slideTotalWidth / 2 + _this.leftval0 &&
           offsetX < _this.slideTotalWidth + _this.leftval0
         ) {
           slideLogoEle1.style.left = offsetX + "px";
-          slidorange1.style.width = (offsetX - _this.leftval0) + "px";
+          slidorange1.style.width = offsetX - _this.leftval0 + "px";
           _this.fundVal = (
-            parseFloat((offsetX - _this.leftval0 - _this.slideTotalWidth/2)*2 / _this.slideTotalWidth) * (500-100)+100
+            parseFloat(
+              (offsetX - _this.leftval0 - _this.slideTotalWidth / 2) *
+                2 /
+                _this.slideTotalWidth
+            ) *
+              (500 - 100) +
+            100
           ).toFixed(2);
         } else {
           slideLogoEle1.style.left = _this.slideTotalWidth + _this.leftval0;
@@ -209,7 +220,9 @@ export default {
       const slideLogoEle3 = document.getElementsByClassName(
         "tab-rule-button"
       )[2];
-      const slidorange2 = document.getElementsByClassName("tab-rule-sild-orange")[2];
+      const slidorange2 = document.getElementsByClassName(
+        "tab-rule-sild-orange"
+      )[2];
       slideLogoEle3.addEventListener("touchmove", function(e) {
         let clientX = e.touches[0].clientX;
         let offsetX = clientX - 20 * _this.scalval + _this.leftval0;
@@ -219,35 +232,42 @@ export default {
           _this.timeVal = 0;
         } else if (
           offsetX > _this.leftval0 &&
-          offsetX <= (_this.slideTotalWidth/2) + _this.leftval0
+          offsetX <= _this.slideTotalWidth / 2 + _this.leftval0
         ) {
           slideLogoEle3.style.left = offsetX + "px";
-          slidorange2.style.width = (offsetX - _this.leftval0) + "px";
+          slidorange2.style.width = offsetX - _this.leftval0 + "px";
           _this.timeVal = parseInt(
-            parseFloat((offsetX - _this.leftval0)*2 / _this.slideTotalWidth) * 12
+            parseFloat((offsetX - _this.leftval0) * 2 / _this.slideTotalWidth) *
+              12
           );
-        }  else if (
-          offsetX > (_this.slideTotalWidth/2) + _this.leftval0 &&
+        } else if (
+          offsetX > _this.slideTotalWidth / 2 + _this.leftval0 &&
           offsetX < _this.slideTotalWidth + _this.leftval0
         ) {
           slideLogoEle3.style.left = offsetX + "px";
-          slidorange2.style.width = (offsetX - _this.leftval0) + "px";
+          slidorange2.style.width = offsetX - _this.leftval0 + "px";
           _this.timeVal = parseInt(
-            parseFloat((offsetX - _this.leftval0 - _this.slideTotalWidth/2)*2 / _this.slideTotalWidth) * (36-12)+12
+            parseFloat(
+              (offsetX - _this.leftval0 - _this.slideTotalWidth / 2) *
+                2 /
+                _this.slideTotalWidth
+            ) *
+              (36 - 12) +
+              12
           );
         } else {
           slideLogoEle3.style.left = _this.slideTotalWidth + _this.leftval0;
           slidorange2.style.width = _this.slideTotalWidth;
           _this.timeVal = 36;
         }
-        if(_this.timeVal<=6){
-            _this.timechose=0;                
-        }else if(_this.timeVal>6&&_this.timeVal<=12){
-            _this.timechose=1;
-        }else if(_this.timeVal>12&&_this.timeVal<=24){
-            _this.timechose=2;
-        }else{
-            _this.timechose=3;
+        if (_this.timeVal <= 6) {
+          _this.timechose = 0;
+        } else if (_this.timeVal > 6 && _this.timeVal <= 12) {
+          _this.timechose = 1;
+        } else if (_this.timeVal > 12 && _this.timeVal <= 24) {
+          _this.timechose = 2;
+        } else {
+          _this.timechose = 3;
         }
       });
     },
@@ -262,21 +282,28 @@ export default {
       }
       _this.deficitValue = parseFloat(returnVal.toFixed(5)).toFixed(2);
     },
-    commit_sury:function(thisval){
-        let _this=thisval;
-        document.getElementsByClassName("tab-survey-but-a")[0].addEventListener('click',function(e){
-            alert(_this.incomeval + _this.fundVal + _this.timeVal);
-            if(_this.incomeval>0 && _this.fundVal>0 && _this.timeVal>0){
-                 alert("heh");
-                document.cookie="shouyi="+(_this.incomeval);
-                document.cookie="kuisun="+(_this.document);       
-                document.cookie="total_amount="+ (parseFloat(_this.fundVal)*10000);
-                document.cookie="surveyStr="+(_this.radioVal)+"_"+(_this.timechose);
-                document.getElementsByClassName('tab-survey-but-a').setAttribute('href','#/commit');
-            }else{
-                alert("请将表单填写完整！");
-                // document.getElementsByClassName('tab-survey-but-a').setAttribute('href','javascript:;');
-            }
+    commit_sury: function(thisval) {
+      let _this = thisval;
+      document
+        .getElementsByClassName("tab-survey-but-a")[0]
+        .addEventListener("click", function(e) {
+          //   alert(_this.incomeval + _this.fundVal + _this.timeVal);
+          if (_this.incomeval > 0 && _this.fundVal > 0 && _this.timeVal > 0) {
+            document.cookie = "shouyi=" + _this.incomeval;
+            document.cookie = "kuisun=" + _this.deficitValue;
+            document.cookie =
+              "total_amount=" + parseInt(parseFloat(_this.fundVal) * 10000);
+            document.cookie =
+              "surveyStr=" + _this.radioVal + "_" + _this.timechose;
+            // document.getElementsByClassName("tab-survey-but-a")[0].setAttribute("href", "/commit");
+            // window.location.href = "/commit";
+          } else {
+            alert("请将表单填写完整！");
+            // document
+            //   .getElementsByClassName("tab-survey-but-a")[0]
+            //   .setAttribute("href", "#");
+              // javascript:;
+          }
         });
     }
   }
@@ -387,4 +414,4 @@ export default {
                 background #ff632c
                 text-align center
 </style>        
-    
+  
