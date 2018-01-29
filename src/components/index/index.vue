@@ -1,6 +1,6 @@
 <template>
     <div class="content">
-        <div class="cont-index">
+        <div class="cont-index" v-if="index_show>0">
             <div class="img-bg">
             </div>
             <div class="but redB white font18 button1">
@@ -10,13 +10,16 @@
                 <span class="but-survey">开始定制</span>
             </div>        
         </div>
+        <router-view></router-view>    
     </div>
 </template>
 
 <script>
 export default {
   data() {
-    return {};
+    return {
+      index_show: 1
+    };
   },
   created() {
     this.$nextTick(function() {
@@ -31,6 +34,7 @@ export default {
       document
         .getElementsByClassName("but-login")[0]
         .addEventListener("click", function(e) {
+          _this.index_show = 0;
           _this.$router.push({ path: "/login" });
         });
     },
@@ -39,6 +43,7 @@ export default {
       document
         .getElementsByClassName("but-survey")[0]
         .addEventListener("click", function(e) {
+          _this.index_show = 0;
           _this.$router.push({ path: "/survey" });
         });
     }

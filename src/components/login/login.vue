@@ -1,5 +1,5 @@
 <template>
-    <div class="cont-login" v-if="loginshow>0">
+    <div class="cont-login">
         <div class="login">
             <div class="login-title font12">请登录您的账号！</div>
             <div class="login-error red" v-if="errorshow">用户名或者密码错误！</div>
@@ -25,7 +25,6 @@ export default {
       imgAry: [],
       username: "",
       password: "",
-      loginshow: 1,
       errorshow: 0
     };
   },
@@ -46,7 +45,6 @@ export default {
             response.body["result"]["status"] === 0 &&
             response.body["result"]["username"] === "admin"
           ) {
-            this.loginshow = 0;
             this.errorshow = 0;
             this.$router.push({ path: "/survey" });
           } else {
