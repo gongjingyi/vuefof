@@ -11,9 +11,8 @@
                 <div class="password-icon"><span></span></div>
                 <div class="password-text"><input type="password" placeholder="请输入密码" value="" id="password" v-model="password"></div>
             </div>
-            <div class="login-but" @click="login">
-                <!-- <span>登录</span> -->
-                <router-link to="/survey" class="tab-login-a"><span>登录</span></router-link>
+            <div class="login-but">
+                <span class="tab-login-a" @click="login">登录</span>
             </div>
         </div>
     </div>
@@ -49,7 +48,7 @@ export default {
           ) {
             this.loginshow = 0;
             this.errorshow = 0;
-            window.location.href = "/survey";
+            this.$router.push({ path: "/survey" });
           } else {
             this.errorshow = 1;
           }

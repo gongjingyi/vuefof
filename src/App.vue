@@ -1,6 +1,7 @@
 <template>
   <div class="app-vue">
     <Index></Index>
+     <router-view></router-view>
   </div>
 </template>
 

@@ -74,7 +74,7 @@
                                             <span class="child-barR">44.3%</span>
                                         </span>
                                     </span>
-                                    <span data-stockid="" data-stockname="" data-stockpct="" data-stockmoney="">详情</span>
+                                    <router-link to="/detail" data-stockid="" data-stockname="" data-stockpct="" data-stockmoney="">详情</router-link>
                                 </li>
                                                                 <li>
                                     <span></span>
@@ -85,7 +85,7 @@
                                             <span class="child-barR">44.3%</span>
                                         </span>
                                     </span>
-                                    <span data-stockid="" data-stockname="" data-stockpct="" data-stockmoney="">详情</span>
+                                    <router-link to="/detail" data-stockid="" data-stockname="" data-stockpct="" data-stockmoney="">详情</router-link>
                                 </li>                                
                             </ul>
                         </span>                        
@@ -110,7 +110,7 @@
                                             <span class="child-barR">44.3%</span>
                                         </span>
                                     </span>
-                                    <span data-stockid="" data-stockname="" data-stockpct="" data-stockmoney="">详情</span>
+                                    <router-link to="/detail" data-stockid="" data-stockname="" data-stockpct="" data-stockmoney="">详情</router-link>
                                 </li>
                                 <li>
                                     <span></span>
@@ -121,7 +121,7 @@
                                             <span class="child-barR">44.3%</span>
                                         </span>
                                     </span>
-                                    <span data-stockid="" data-stockname="" data-stockpct="" data-stockmoney="">详情</span>
+                                    <router-link to="/detail" data-stockid="" data-stockname="" data-stockpct="" data-stockmoney="">详情</router-link>
                                 </li>                                
                             </ul>
                         </span>                        

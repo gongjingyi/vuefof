@@ -80,7 +80,7 @@
             </div>
         </div>
         <div class="tab-survey-but">
-            <router-link to="/commit" class="tab-survey-but-a">完成</router-link>
+          <span class="tab-survey-but-a">完成</span>
         </div>
     </div>
 </template>
@@ -287,7 +287,6 @@ export default {
       document
         .getElementsByClassName("tab-survey-but-a")[0]
         .addEventListener("click", function(e) {
-          //   alert(_this.incomeval + _this.fundVal + _this.timeVal);
           if (_this.incomeval > 0 && _this.fundVal > 0 && _this.timeVal > 0) {
             document.cookie = "shouyi=" + _this.incomeval;
             document.cookie = "kuisun=" + _this.deficitValue;
@@ -295,14 +294,9 @@ export default {
               "total_amount=" + parseInt(parseFloat(_this.fundVal) * 10000);
             document.cookie =
               "surveyStr=" + _this.radioVal + "_" + _this.timechose;
-            // document.getElementsByClassName("tab-survey-but-a")[0].setAttribute("href", "/commit");
-            // window.location.href = "/commit";
+            _this.$router.push({ path: "/commit" });
           } else {
             alert("请将表单填写完整！");
-            // document
-            //   .getElementsByClassName("tab-survey-but-a")[0]
-            //   .setAttribute("href", "#");
-              // javascript:;
           }
         });
     }
@@ -405,7 +399,8 @@ export default {
                                 width 20%
         .tab-survey-but
             margin-top 15px * scalval
-            a
+            .tab-survey-but-a
+                display inline-block
                 height 35px * scalval
                 width 100%
                 line-height 35px * scalval

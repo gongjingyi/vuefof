@@ -1,41 +1,50 @@
 <template>
     <div class="content">
-        <div class="cont-index" v-if="indexshow>0">
+        <div class="cont-index">
             <div class="img-bg">
             </div>
-            <div class="but redB white font18 button1" @click="gologin">
-                <router-link to="/login">去登录</router-link>
+            <div class="but redB white font18 button1">
+                <span class="but-login">去登陆</span>
             </div>
-            <div class="but redB white font18 button2" @click="gosurvey">
-                <router-link to="/survey">开始定制</router-link>
+            <div class="but redB white font18 button2">
+                <span class="but-survey">开始定制</span>
             </div>        
         </div>
-        <router-view></router-view>
     </div>
 </template>
 
 <script>
 export default {
   data() {
-    return {
-      indexshow: 1,
-      loginshow: 0,
-      surveyshow: 0
-    };
+    return {};
+  },
+  created() {
+    this.$nextTick(function() {
+      let _this = this;
+      _this.gologin(_this);
+      _this.gosurvey(_this);
+    });
   },
   methods: {
-    gologin() {
-      this.indexshow = 0;
-      this.loginshow = 1;
+    gologin(thisval) {
+      let _this = thisval;
+      document
+        .getElementsByClassName("but-login")[0]
+        .addEventListener("click", function(e) {
+          _this.$router.push({ path: "/login" });
+        });
     },
-    gosurvey() {
-      this.indexshow = 0;
-      this.surveyshow = 1;
+    gosurvey(thisval) {
+      let _this = thisval;
+      document
+        .getElementsByClassName("but-survey")[0]
+        .addEventListener("click", function(e) {
+          _this.$router.push({ path: "/survey" });
+        });
     }
   }
 };
 </script>
-
 <style lang="stylus" rel="stylesheet/stylus">
 @import '../../common/stylus/mixin.styl';
 scalval = 1.172
@@ -52,3 +61,4 @@ scalval = 1.172
     .button2
         bottom 15px * scalval
 </style>
+
