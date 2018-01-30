@@ -27,7 +27,7 @@
         </div>
         <div class="detail-list detail-list3">
             <div class="detail-list-tip">
-                <span><span class="netvalue-tip"><span>净值走势图</span><span>近一年收益排名</span></span></span>
+                <span><span class="netvalue-tip"><span>净值走势图</span><span>近一年收益排名3/43</span></span></span>
             </div>
             <div class="detail-netvalue">
                 <div class="netvalue-data-tab">
@@ -113,8 +113,23 @@
             height 40px * scalval
             line-height 40px * scalval
             font-size 15px * scalval
+            padding 0 10px * scalval
+            border-1px-bottom(#dcdbe0)
+            &>span
+                display inline-block
+                height 100%
+                width 100%
+            .netvalue-tip
+                &>span:nth-child(1)
+                    float left 
+                    font-size 15px * scalval
+                    font-weight bold
+                &>span:nth-child(2)
+                    float right
+                    font-size 12px * scalval
         .detail-list-tip.first
-            text-align center                       
+            text-align center
+            border-1px-none();                      
             .stockname
                 font-weight bold
         .detail-peizhi
@@ -123,12 +138,15 @@
             .detail-peizhiL
                 width 215px * scalval
                 flex 0 0 215px * scalval
+                font-size 0
                 &>span:nth-child(1)
                     display inline-block
                     width 100%
                     height 27px * scalval
                     line-height 27px * scalval
-                    padding-bottom 6px * scalval                    
+                    padding-bottom 6px * scalval
+                    font-size 10px * scalval                    
+                    color #7b7a80
                 &>span:nth-child(2)
                     display inline-block
                     width 100%
@@ -153,7 +171,8 @@
                         left 150px * scalval
                         y-center()
                         font-size 8px * scalval
-                        color #343434
+                        color #333333
+                        font-weight bold
             .detail-peizhiR
                 flex 1
                 font-size 0
@@ -163,6 +182,8 @@
                     height 27px * scalval
                     line-height 27px * scalval                    
                     padding-bottom 6px * scalval
+                    font-size 10px * scalval
+                    color #7b7a80
                 &>span:nth-child(2)
                     display inline-block
                     width 100%
@@ -170,5 +191,31 @@
                     position relative
                     line-height 12px * scalval
                     font-size 8px * scalval
-                    color #343434
+                    color #333333
+                    font-weight bold
+        .detail-evaluate
+            padding 10px * scalval 10px * scalval
+            line-height 21px * scalval
+        .detail-netvalue      
+            padding 0 10px * scalval              
+            .netvalue-data-tab
+                margin 15px * scalval 0            
+                font-size 0
+                height 15px * scalval
+                border-top 1px * scalval solid #bfc2c7
+                border-bottom 1px * scalval solid #bfc2c7             
+                >span
+                    display inline-block
+                    height 100%
+                    border-right 1px * scalval solid #bfc2c7
+                    font-size 8px * scalval
+                    width 73.5px * scalval
+                    line-height 15px * scalval
+                    text-align center
+                >span.active
+                    background #bfc2c7
+                    color #ffffff    
+                &>span:nth-child(1)
+                    border-left 1px * scalval solid #bfc2c7
+                    width 74px * scalval
 </style>
