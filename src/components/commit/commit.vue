@@ -270,6 +270,54 @@ export default {
 <style lang="stylus" rel="stylesheet/stylus">
     @import '../../common/stylus/mixin.styl';
     scalval = 1.172
+    .commit-list
+        .pie-list
+            padding 20px*scalval 0
+            overflow hidden
+            ul
+                padding 0
+                margin 0
+                list-style none
+                li
+                    height 12px * scalval
+                    font-size 0
+                    line-height 12px * scalval
+                    vertical-align middle
+                    width 50%
+                    float left
+                    span 
+                        font-size 12px * scalval
+                    span+span
+                        margin-left 8px*scalval
+                    &>span:nth-child(1)
+                        display inline-block
+                        height 12px*scalval
+                        width 12px*scalval
+                        border-radius 6px*scalval    
+                        background #ff0000
+                &>li:nth-child(n+3)
+                    margin-top 15px * scalval        
+        .pie-table
+            table 
+                border 0
+                width 100%
+                border-collapse collapse
+                border 1px * scalval solid #e5e6e8
+                tr+tr
+                    border-top 1px * scalval solid #e5e6e8
+                tr
+                    border 0
+                    height 30px * scalval
+                    text-align center
+                    th,td
+                        border 0
+                        font-size 10px * scalval
+                    th
+                        font-weight normal
+                    th+th
+                        border-left 1px * scalval solid #e5e6e8
+                    td+td
+                        border-left 1px * scalval solid #e5e6e8
     .commit-list+.commit-list
         border-top 10px * scalval solid #e5e6e8
     .commit-list1

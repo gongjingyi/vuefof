@@ -37,8 +37,8 @@
                     <span class="active">一年</span>
                 </div>
                 <div class="netvalue-compare">
-                    <span><span class="compare-line blue"></span><span class="compare-name"></span><span class="compare-radio blue">43.3%</span></span>
-                    <span><span class="self-line red"></span><span class="self-name"></span><span class="self-radio red">53.3%</span></span>
+                    <span><span class="compare-line blueB"></span><span class="compare-name">国债+企业债</span><span class="compare-radio blue">43.3%</span></span>
+                    <span><span class="self-line redB"></span><span class="self-name">本基金</span><span class="self-radio red">53.3%</span></span>
                 </div>
                 <div class="netvalue-graph">
                     <div class="netvalue-line" id="netvalue-line">
@@ -92,7 +92,7 @@
                     <tbody>
                         <tr><th>名称/代码</th><th>持仓比例</th></tr>
                         <tr><td>17中建材SCP006/011778004</td><td>4.68%</td></tr>
-                        <tr><td>17中建材SCP006/011778004</td><td>4.68%</td></tr>                        
+                        <tr><td>17中建材SCP006/011778004</td><td>4.68%</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -199,23 +199,93 @@
         .detail-netvalue      
             padding 0 10px * scalval              
             .netvalue-data-tab
-                margin 15px * scalval 0            
+                width 300px * scalval
+                margin 15px * scalval 0
                 font-size 0
                 height 15px * scalval
-                border-top 1px * scalval solid #bfc2c7
-                border-bottom 1px * scalval solid #bfc2c7             
                 >span
                     display inline-block
                     height 100%
                     border-right 1px * scalval solid #bfc2c7
                     font-size 8px * scalval
-                    width 73.5px * scalval
+                    width 74px * scalval
                     line-height 15px * scalval
                     text-align center
+                    border-top 1.172px solid #bfc2c7
+                    border-bottom 1.172px solid #bfc2c7
                 >span.active
                     background #bfc2c7
-                    color #ffffff    
+                    color #ffffff
                 &>span:nth-child(1)
                     border-left 1px * scalval solid #bfc2c7
-                    width 74px * scalval
+                    width 73px * scalval
+        .netvalue-compare
+            padding 0 0 15px * scalval 0
+            span
+                display inline-block
+            &>span
+                font-size 0
+                vertical-align middle
+                height 10px * scalval         
+                &>span
+                    margin-left 7px * scalval
+                span
+                    font-size 10px * scalval
+                    line-height 10px * scalval
+                    vertical-align middle                    
+                .compare-line
+                    height 2.5px * scalval
+                    width 15px * scalval
+                .self-line
+                    height 2.5px * scalval
+                    width 15px * scalval
+            &>span+span
+                margin-left 18px * scalval
+        .netvalue-graph
+            .netvalue-line
+                width 100%
+                height 120px * scalval
+        .fund-information,.fund-manager
+            padding 10px * scalval
+            &>ul
+                list-style none
+                padding 0
+                margin 0
+                &>li
+                    font-size 0
+                    line-height 22px * scalval
+                    span
+                        font-size 11px * scalval
+                        line-height 11px * scalval
+                        vertical-align middle
+                        color #333333
+        .fund-manager
+            table
+                width 100%
+                tr
+                    height 11px * scalval
+                    font-size 11px * scalval
+                    th
+                        color #333333
+                        vertical-align middle
+                        font-weight normal
+                    td 
+                        color #7a7b80   
+                        vertical-align middle
+        .hold-stock
+            padding-bottom 15px*scalval
+            table
+                width 100%
+                border-collapse collapse
+                tbody
+                    tr
+                        height 41px * scalval
+                        th,td
+                            font-weight normal
+                            text-align left
+                            border-1px-bottom(#e5e6e8)
+                        &>th:nth-child(1),&>td:nth-child(1)
+                            padding-left 10px*scalval
+                            font-size 12px * scalval
+                           
 </style>
