@@ -108,6 +108,12 @@ export default {
   },
   created() {
     this.$nextTick(function() {
+      if (
+        document.getElementsByClassName("cont-index") &&
+        document.getElementsByClassName("cont-index")[0]
+      ) {
+        document.getElementsByClassName("cont-index")[0].style.display = "none";
+      }
       let _this = this;
       _this.slideTotalWidth = document.getElementsByClassName(
         "tab-rule-sild"

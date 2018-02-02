@@ -28,7 +28,16 @@ export default {
       errorshow: 0
     };
   },
-  created() {},
+  created() {
+    this.$nextTick(function() {
+      if (
+        document.getElementsByClassName("cont-index") &&
+        document.getElementsByClassName("cont-index")[0]
+      ) {
+        document.getElementsByClassName("cont-index")[0].style.display = "none";
+      }
+    });
+  },
   methods: {
     login() {
       const url = "https://dev.gupiaoxianji.com/fof/";

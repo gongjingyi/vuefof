@@ -68,26 +68,26 @@
                             </div>
                             <ul>
                                 <li>
-                                    <span></span>
+                                    <span>22.33万元</span>
                                     <span>
-                                        <span class="child-name"></span>
+                                        <span class="child-name">降低欧文司机吴qos就售价为器降低欧文司机吴qos就售价为器</span>
                                         <span class="child-bar">
                                             <span class="child-barL"><span class="child-radio"></span></span>
                                             <span class="child-barR">44.3%</span>
                                         </span>
                                     </span>
-                                    <router-link to="/detail" data-stockid="" data-stockname="" data-stockpct="" data-stockmoney="">详情</router-link>
+                                    <span data-stockid="" data-stockname="" data-stockpct="" data-stockmoney="" class="detail-but-link">详情</span>
                                 </li>
-                                                                <li>
-                                    <span></span>
+                                <li>
+                                    <span>10.22万元</span>
                                     <span>
-                                        <span class="child-name"></span>
+                                        <span class="child-name">降低欧文司机吴qos就售价为器降低欧文司机吴qos就售价为器qos就售价为器qos就</span>
                                         <span class="child-bar">
                                             <span class="child-barL"><span class="child-radio"></span></span>
                                             <span class="child-barR">44.3%</span>
                                         </span>
                                     </span>
-                                    <router-link to="/detail" data-stockid="" data-stockname="" data-stockpct="" data-stockmoney="">详情</router-link>
+                                    <span data-stockid="" data-stockname="" data-stockpct="" data-stockmoney="" class="detail-but-link">详情</span>
                                 </li>                                
                             </ul>
                         </span>                        
@@ -106,24 +106,24 @@
                                 <li>
                                     <span></span>
                                     <span>
-                                        <span class="child-name"></span>
+                                        <span class="child-name">器降低欧文司机吴qos就售价为器</span>
                                         <span class="child-bar">
                                             <span class="child-barL"><span class="child-radio"></span></span>
                                             <span class="child-barR">44.3%</span>
                                         </span>
                                     </span>
-                                    <router-link to="/detail" data-stockid="" data-stockname="" data-stockpct="" data-stockmoney="">详情</router-link>
+                                    <span data-stockid="" data-stockname="" data-stockpct="" data-stockmoney="" class="detail-but-link">详情</span>
                                 </li>
                                 <li>
                                     <span></span>
                                     <span>
-                                        <span class="child-name"></span>
+                                        <span class="child-name">器降低欧文司机吴qos就售价为器器降低欧文司机</span>
                                         <span class="child-bar">
                                             <span class="child-barL"><span class="child-radio"></span></span>
                                             <span class="child-barR">44.3%</span>
                                         </span>
                                     </span>
-                                    <router-link to="/detail" data-stockid="" data-stockname="" data-stockpct="" data-stockmoney="">详情</router-link>
+                                    <span data-stockid="" data-stockname="" data-stockpct="" data-stockmoney="" class="detail-but-link">详情</span>
                                 </li>                                
                             </ul>
                         </span>                        
@@ -148,6 +148,12 @@ export default {
   },
   created() {
     this.$nextTick(function() {
+      if (
+        document.getElementsByClassName("cont-index") &&
+        document.getElementsByClassName("cont-index")[0]
+      ) {
+        document.getElementsByClassName("cont-index")[0].style.display = "none";
+      }
       let _this = this;
       _this.darwpie(_this);
       _this.drawline(_this);
@@ -214,7 +220,7 @@ export default {
           borderWidth: 0,
           x: "13%",
           y: "5%",
-          x2: "2%",
+          x2: "0",
           y2: "22%"
         },
         xAxis: [
@@ -378,6 +384,104 @@ export default {
             border-1px-bottom(#dcdbe1)
         .peizhi-tip    
             padding 0 10px * scalval
+        .peizhi-tip
+            padding 15px*scalval 10px*scalval 18px*scalval 10px*scalval
+            display flex
+            font-size 10px *scalval
+            .peizhi-tipL
+                width 53px*scalval
+                flex 0 0 53px*scalval
+            .peizhi-tipR
+                flex 1    
+        .peizhi-cont
+            padding 0 10px*scalval 30px*scalval 10px*scalval
+            color #333333
+            &>ul
+                list-style none
+                padding 0
+                margin 0
+                &>li+li
+                    margin-top 35px*scalval
+                &>li
+                    width 100%
+                    padding 0
+                    margin 0
+                    display flex 
+                    span 
+                        display inline-block
+                        font-size 0           
+                    .peizhi-contL
+                        width 53px*scalval
+                        flex 0 0 53px*scalval
+                        font-size 10px *scalval
+                    .peizhi-contR
+                        flex 1
+                        .peizhi-item-parent
+                            font-size 0
+                            display flex
+                            span
+                                font-size 10px*scalval
+                                height 14px*scalval
+                                line-height 14px*scalval
+                                vertical-align middle
+                            &>span:nth-child(1)
+                                width 57px*scalval
+                                flex 0 0 57px*scalval
+                            &>span:nth-child(2)
+                                width 110px*scalval
+                                flex 0 0 110px*scalval
+                                position relative
+                                background #ff0000
+                            &>span:nth-child(3)
+                                flex 1
+                                margin-left 8px*scalval
+                                color #888888
+                        ul
+                            list-style none
+                            padding 0
+                            margin 0
+                            &>li+li
+                                margin-top 5px *scalval
+                            li
+                                font-size 0
+                                display flex
+                                span
+                                    font-size 10px *scalval
+                                &>span:nth-child(1)    
+                                    width 57px*scalval
+                                    flex 0 0 57px*scalval
+                                    font-size 7px * scalval
+                                    padding-top 8px*scalval
+                                &>span:nth-child(2)    
+                                    width 160px*scalval
+                                    flex 0 0 160px*scalval
+                                    font-size 0
+                                    .child-name
+                                        font-size 8px * scalval
+                                        line-height 13px * scalval
+                                        padding 5px *scalval 0 5px*scalval 0
+                                    .child-bar
+                                        font-size 0
+                                        width 100%
+                                        .child-barL
+                                            width 110px*scalval
+                                            flex 0 0 110px*scalval
+                                            background #00ff00
+                                        .child-barR
+                                            font-size 6px * scalval
+                                            margin-left 8px*scalval
+                                            flex 1
+                                &>span:nth-child(3)    
+                                    flex 1
+                                    font-size 8px * scalval
+                                    height 13px*scalval
+                                    width 30px*scalval
+                                    background #ff0000
+                                    text-align center
+                                    line-height 13px*scalval
+                                    border-radius 7.5px*scalval
+                                    color #ffffff
+                                    margin-top 8px*scalval
     .commit-list+.commit-list
         border-top 10px * scalval solid #e5e6e8
     .commit-list1
@@ -390,8 +494,8 @@ export default {
                 margin 0 auto
     .commit-list2
         .line-cont
-            width 100%
-            padding 0 10px *scalval
+            width 300px * scalval
+            margin 0 auto
             .line-graph
                 width 100%
                 height 131px * scalval
