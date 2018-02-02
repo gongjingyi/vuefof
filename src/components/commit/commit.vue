@@ -32,8 +32,10 @@
                     <span>最近一年组合收益曲线图</span>
                 </div>
                 <div class="line-tipR">
-                    <span><span class="name">组合收益曲线图</span><span class="line"></span></span>
-                    <span><span class="name"></span><span class="line"></span></span>
+                    <div class="line-tipR-name">
+                        <span><span class="name">组合收益曲线</span><span class="line"></span></span>
+                        <span><span class="name">大盘收益曲线</span><span class="line"></span></span>
+                    </div>
                 </div>
             </div>
             <div class="line-cont">
@@ -279,20 +281,20 @@ export default {
                 margin 0
                 list-style none
                 li
-                    height 12px * scalval
+                    height 11px * scalval
                     font-size 0
-                    line-height 12px * scalval
+                    line-height 11px * scalval
                     vertical-align middle
                     width 50%
                     float left
                     span 
-                        font-size 12px * scalval
+                        font-size 11px * scalval
                     span+span
                         margin-left 8px*scalval
                     &>span:nth-child(1)
                         display inline-block
-                        height 12px*scalval
-                        width 12px*scalval
+                        height 11px*scalval
+                        width 11px*scalval
                         border-radius 6px*scalval    
                         background #ff0000
                 &>li:nth-child(n+3)
@@ -318,6 +320,64 @@ export default {
                         border-left 1px * scalval solid #e5e6e8
                     td+td
                         border-left 1px * scalval solid #e5e6e8
+        .pie-conclude
+            padding 15px*scalval 0 10px*scalval 0
+            p 
+                padding 0
+                margin 0
+                line-height 22px * scalval       
+                font-size 10px * scalval
+        .line-tip
+            display flex
+            height 40px * scalval
+            padding 0 10px *scalval
+            border-1px-bottom(#dcdbe1)
+            .line-tipL
+                width 160px * scalval
+                flex 0 0 160px * scalval
+                span
+                    display inline-block
+                    font-size 14px * scalval
+                    line-height 40px * scalval                    
+            .line-tipR
+                flex 1
+                font-size 0
+                .line-tipR-name
+                    width 100%
+                    display flex
+                    span 
+                        display inline-block
+                    &>span+span
+                        margin-left 7px * scalval
+                    &>span:nth-child(1)
+                        width 60px * scalval
+                        flex 0 0 60px * scalval
+                    &>span:nth-child(2)
+                        flex 1                                            
+                    &>span
+                        font-size 0
+                        height 100%
+                        &>span+span
+                            margin-top 4px * scalval
+                        span
+                            font-size 9px * scalval
+                            width 100%
+                            text-align center
+                        .name     
+                            height 9px * scalval
+                            margin-top 13.5px * scalval
+                        .line
+                            height 1.5px * scalval
+                            width 100%
+                            background #ff0000
+        .peizhi-cont-tip
+            height 40px*scalval
+            font-size 14px * scalval
+            line-height 40px * scalval
+            padding 0 10px * scalval
+            border-1px-bottom(#dcdbe1)
+        .peizhi-tip    
+            padding 0 10px * scalval
     .commit-list+.commit-list
         border-top 10px * scalval solid #e5e6e8
     .commit-list1
@@ -329,9 +389,9 @@ export default {
                 height 126px * scalval
                 margin 0 auto
     .commit-list2
-        padding 0 10px*scalval 0 10px*scalval
         .line-cont
             width 100%
+            padding 0 10px *scalval
             .line-graph
                 width 100%
                 height 131px * scalval
