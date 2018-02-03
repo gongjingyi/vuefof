@@ -95,9 +95,9 @@ export default {
       incomeval: 0,
       deficitValue: 0,
       fundVal: 0,
-      radioVal: 0,
-      timeVal: 0,
-      timechose: 0,
+      radioVal: 1,
+      timeVal: 1,
+      timechose: 1,
       widthorg: 0
     };
   },
@@ -217,7 +217,7 @@ export default {
             spanary[j].setAttribute("class", "");
           }
           this.setAttribute("class", "active");
-          _this.radioVal = i;
+          _this.radioVal = (i + 1);
         };
       }
     },
@@ -267,13 +267,13 @@ export default {
           _this.timeVal = 36;
         }
         if (_this.timeVal <= 6) {
-          _this.timechose = 0;
-        } else if (_this.timeVal > 6 && _this.timeVal <= 12) {
           _this.timechose = 1;
-        } else if (_this.timeVal > 12 && _this.timeVal <= 24) {
+        } else if (_this.timeVal > 6 && _this.timeVal <= 12) {
           _this.timechose = 2;
-        } else {
+        } else if (_this.timeVal > 12 && _this.timeVal <= 24) {
           _this.timechose = 3;
+        } else {
+          _this.timechose = 4;
         }
       });
     },
