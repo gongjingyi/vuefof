@@ -76,7 +76,7 @@
                                             <span class="child-barR">44.3%</span>
                                         </span>
                                     </span>
-                                    <span data-stockid="" data-stockname="" data-stockpct="" data-stockmoney="" class="detail-but-link">详情</span>
+                                    <span class="detail-but-link" data-stockid="" data-stockname="" data-stockpct="" data-stockmoney="">详情</span>
                                 </li>
                                 <li>
                                     <span>10.22万元</span>
@@ -87,7 +87,7 @@
                                             <span class="child-barR">44.3%</span>
                                         </span>
                                     </span>
-                                    <span data-stockid="" data-stockname="" data-stockpct="" data-stockmoney="" class="detail-but-link">详情</span>
+                                    <span class="detail-but-link" data-stockid="" data-stockname="" data-stockpct="" data-stockmoney="">详情</span>
                                 </li>                                
                             </ul>
                         </span>                        
@@ -112,7 +112,7 @@
                                             <span class="child-barR">44.3%</span>
                                         </span>
                                     </span>
-                                    <span data-stockid="" data-stockname="" data-stockpct="" data-stockmoney="" class="detail-but-link">详情</span>
+                                    <span class="detail-but-link" data-stockid="" data-stockname="" data-stockpct="" data-stockmoney="">详情</span>
                                 </li>
                                 <li>
                                     <span></span>
@@ -123,7 +123,7 @@
                                             <span class="child-barR">44.3%</span>
                                         </span>
                                     </span>
-                                    <span data-stockid="" data-stockname="" data-stockpct="" data-stockmoney="" class="detail-but-link">详情</span>
+                                    <span class="detail-but-link" data-stockid="" data-stockname="" data-stockpct="" data-stockmoney="">详情</span>
                                 </li>                                
                             </ul>
                         </span>                        
@@ -753,27 +753,18 @@ export default {
       let _this = this;
       _this.darwpie(_this);
       _this.drawline(_this);
-      _this.requstpie(_this);
+      _this.druplink(_this);
     });
   },
   methods: {
     requstpie(thisval) {},
-    getCookieName(name) {
-      let value = "";
-      let cookieStr = document.cookie;
-      if (cookieStr.indexOf(name) !== -1) {
-        let splitName = name + "=";
-        let valueAry = cookieStr.split(splitName);
-        if (valueAry && valueAry.length > 1) {
-          let splitAry = valueAry[1].split("; ");
-          if (splitAry && splitAry.length > 0) {
-            value = splitAry[0];
-          } else {
-            value = valueAry[1];
-          }
+    druplink(thisval){
+        let linkary=document.getElementsByClassName('detail-but-link');
+        for(let i=0;i<linkary.length;i++){
+            linkary[i].addEventListener("click",function(e){
+                
+            });
         }
-      }
-      return value;
     },
     darwpie() {
       let mycharts = echarts.init(document.getElementById("pie-graph"));
